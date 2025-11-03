@@ -1,0 +1,4 @@
+-- Create Database
+CREATE DATABASE IF NOT EXISTS vehicle_parts_db;
+USE vehicle_parts_db;
+
