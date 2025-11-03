@@ -9,7 +9,7 @@ INSERT INTO `categories` (`name`, `description`, `status`) VALUES
 ('Fluids & Filters', 'Engine oil, coolant, brake fluid, oil filters, and air filters.', 'active'),
 ('Accessories & Tools', 'Car covers, toolkits, cleaning supplies, and mounting hardware.', 'active');
 
--- --------------------------------------------------------------------------------------------------------------------------------
+-- ________________________________________________________________________________________________________________
 
 -- Insert 40 sample car parts for seller with ID 2 (Prices in INR)
 INSERT INTO parts (name, category_id, description, price, stock_quantity, image_url, seller_id, status) VALUES
