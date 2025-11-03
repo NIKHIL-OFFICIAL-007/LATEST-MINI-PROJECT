@@ -1,5 +1,5 @@
 -- Insert 
-INSERT INTO categories (name, description, status) VALUES
+INSERT INTO `categories` (`name`, `description`, `status`) VALUES
 ('Engine Parts', 'Filters, belts, gaskets, spark plugs, and engine components.', 'active'),
 ('Brakes & Suspension', 'Brake pads, rotors, shocks, struts, and suspension kits.', 'active'),
 ('Wheels & Tires', 'Rims, wheels, tires, valve stems, and tire pressure sensors.', 'active'),
@@ -7,7 +7,7 @@ INSERT INTO categories (name, description, status) VALUES
 ('Exhaust System', 'Mufflers, catalytic converters, exhaust pipes, and headers.', 'active'),
 ('Interior & Comfort', 'Seats, floor mats, steering wheels, air vents, and trim.', 'active'),
 ('Fluids & Filters', 'Engine oil, coolant, brake fluid, oil filters, and air filters.', 'active'),
-('Accessories & Tools', 'Car covers, toolkits, cleaning supplies, and mounting hardware.', 'active');
+('Accessories & Tools', 'Car covers, toolkits, cleaning supplies, and mounting hardware.', 'active');
 
 ----------------------------------------------------------------------------------------------------------------------------------
 
