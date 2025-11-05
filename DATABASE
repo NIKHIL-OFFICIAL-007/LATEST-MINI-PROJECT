@@ -41,7 +41,7 @@ CREATE TABLE `parts` (
   `stock_quantity` int(11) NOT NULL,
   `image_url` varchar(512) DEFAULT NULL,
   `seller_id` int(11) NOT NULL,
-  `status` enum('active', 'inactive', 'draft') DEFAULT 'active',
+  `status` enum('active', 'hidden') DEFAULT 'active',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
