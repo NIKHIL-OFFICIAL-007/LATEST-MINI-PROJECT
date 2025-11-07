@@ -63,42 +63,7 @@ CREATE TABLE `cart_items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
--- Table 5: complaints
-CREATE TABLE `complaints` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `complainant_id` int(11) NOT NULL,
-  `against_id` int(11) NOT NULL,
-  `part_id` int(11) DEFAULT NULL,
-  `order_id` int(11) DEFAULT NULL,
-  `reason` text NOT NULL,
-  `evidence` text DEFAULT NULL,
-  `status` enum('pending', 'reviewed', 'action_taken', 'dismissed') DEFAULT 'pending',
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`),
-  KEY `complainant_id` (`complainant_id`),
-  KEY `against_id` (`against_id`),
-  KEY `part_id` (`part_id`),
-  KEY `order_id` (`order_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
--- Table 6: knowledge_base
-CREATE TABLE `knowledge_base` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL,
-  `slug` varchar(255) NOT NULL,
-  `content` text NOT NULL,
-  `category` enum('returns', 'payments', 'orders', 'accounts', 'general') DEFAULT 'general',
-  `author_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `slug` (`slug`),
-  KEY `author_id` (`author_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
--- Table 7: notifications
+-- Table 5: notifications
 CREATE TABLE `notifications` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -111,7 +76,7 @@ CREATE TABLE `notifications` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
--- Table 8: orders
+-- Table 6: orders
 CREATE TABLE orders (
   id int(11) NOT NULL AUTO_INCREMENT,
   buyer_id int(11) NOT NULL,
@@ -137,7 +102,7 @@ CREATE TABLE orders (
   CONSTRAINT fk_orders_seller FOREIGN KEY (seller_id) REFERENCES users (id) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Table 9: order_items
+-- Table 7: order_items
 CREATE TABLE order_items (
   id int(11) NOT NULL AUTO_INCREMENT,
   order_id int(11) NOT NULL,
@@ -152,7 +117,7 @@ CREATE TABLE order_items (
   CONSTRAINT fk_order_items_seller FOREIGN KEY (seller_id) REFERENCES users (id) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Table 10: order_status_history
+-- Table 8: order_status_history
 CREATE TABLE order_status_history (
   id int(11) NOT NULL AUTO_INCREMENT,
   order_id int(11) NOT NULL,
@@ -169,7 +134,7 @@ CREATE TABLE order_status_history (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
--- Table 11: wishlists
+-- Table 9: wishlists
 CREATE TABLE `wishlists` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -181,7 +146,7 @@ CREATE TABLE `wishlists` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
--- Table 12: reviews
+-- Table 10: reviews
 CREATE TABLE `reviews` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `part_id` int(11) NOT NULL,
@@ -197,7 +162,7 @@ CREATE TABLE `reviews` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
--- Table 13: tickets
+-- Table 11: tickets
 CREATE TABLE `tickets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -221,7 +186,7 @@ CREATE TABLE `tickets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
--- Table 14: ticket_replies
+-- Table 12: ticket_replies
 CREATE TABLE `ticket_replies` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ticket_id` int(11) NOT NULL,
@@ -237,7 +202,7 @@ CREATE TABLE `ticket_replies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
--- Table 15: admin_logs
+-- Table 13: admin_logs
 CREATE TABLE `admin_logs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `admin_id` int(11) NOT NULL,
@@ -251,7 +216,7 @@ CREATE TABLE `admin_logs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
--- Table 16: account_deletion_requests
+-- Table 14: account_deletion_requests
 CREATE TABLE `account_deletion_requests` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -263,7 +228,7 @@ CREATE TABLE `account_deletion_requests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
--- Table 17: deleted_users_archive
+-- Table 15: deleted_users_archive
 CREATE TABLE `deleted_users_archive` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `original_user_id` int(11) NOT NULL,
@@ -277,7 +242,7 @@ CREATE TABLE `deleted_users_archive` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
--- Table 18: settings
+-- Table 16: settings
 CREATE TABLE `settings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `site_name` varchar(255) NOT NULL,
@@ -290,7 +255,7 @@ CREATE TABLE `settings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
--- Table 19: admin_applications
+-- Table 17: admin_applications
 CREATE TABLE `admin_applications` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) UNSIGNED NOT NULL,
@@ -306,7 +271,7 @@ CREATE TABLE `admin_applications` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
--- Table 20: seller_applications
+-- Table 18: seller_applications
 CREATE TABLE `seller_applications` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -325,7 +290,7 @@ CREATE TABLE `seller_applications` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
--- Table 21: support_applications
+-- Table 19: support_applications
 CREATE TABLE `support_applications` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -345,7 +310,7 @@ CREATE TABLE `support_applications` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
--- Table 22: product_alerts
+-- Table 20: product_alerts
 CREATE TABLE product_alerts (
     alert_id INT(11) NOT NULL AUTO_INCREMENT,
     user_id INT(11) NOT NULL,
